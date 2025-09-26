@@ -67,7 +67,7 @@ def cargar_y_configurar():
     
 
     # Validar columnas
-    columnas = {"Modelo", "Serie", "Puerto", "Baudios", "Nombre", "Usuario", "Contrasena", "Dominio"}
+    columnas = {"modelo", "serie", "puerto", "baudios", "nombre", "usuario", "contrasena", "dominio"}
     if not columnas.issubset(df.columns):
         raise ValueError(f"El Excel debe tener las columnas: {columnas}")
 
@@ -100,7 +100,7 @@ def cargar_y_configurar():
                 print("Salida completa de 'show inventory':\n", salida)
 
             ser.close()
-
+    
         except Exception as e:
             print(f" Error en {puerto}: {e}")
 
