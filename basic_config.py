@@ -63,7 +63,7 @@ def configurar_dispositivo(ser, nombre, usuario, contrasena, dominio):
 
 def cargar_y_configurar():
     """Lee el Excel y configura el dispositivo si hay coincidencia."""
-    df = pd.read_excel(r"C:\Users\moniy\OneDrive\Documentos\UNI\TRABAJOS\Programación de Redes\GIT LEARNING\dispositivos_ejemplo.xlsx")
+    df = pd.read_excel(r"C:\Users\moniy\OneDrive\Documentos\UNI\TRABAJOS\Programación de Redes\GIT LEARNING\dispositivos_salazar.xlsx")
     
 
     # Validar columnas
@@ -100,7 +100,7 @@ def cargar_y_configurar():
                 print("Salida completa de 'show inventory':\n", salida)
 
             ser.close()
-    
+
         except Exception as e:
             print(f" Error en {puerto}: {e}")
 
