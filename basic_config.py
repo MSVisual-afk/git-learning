@@ -30,7 +30,7 @@ def configurar_dispositivo(ser, nombre, usuario, contrasena, dominio):
         f"hostname {nombre}",
         f"username {usuario} password {contrasena}",
         f"ip domain-name {dominio}",
-        "crypto key generate rsa",
+        "crypto key generate rsa modulus 1024",
     ]
 
     for cmd in comandos:
