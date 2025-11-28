@@ -1,0 +1,96 @@
+
+Current configuration : 1796 bytes
+!
+version 12.3
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname ap
+!
+enable secret 5 $1$buKl$9bDtmkxLuUK5zblJ57g/u1
+!
+ip subnet-zero
+ip domain name Cisco.com
+ip name-server 8.8.8.8
+ip dhcp excluded-address 192.168.10.0 192.168.10.5
+!
+ip dhcp pool DATA
+   network 192.168.10.0 255.255.255.0
+   default-router 192.168.10.2
+!
+!
+no aaa new-model
+!
+dot11 ssid Team1
+   max-associations 15
+   authentication open
+   guest-mode
+   infrastructure-ssid
+!
+!
+!
+username Cisco password 7 032752180500
+!
+bridge irb
+!
+!
+interface Dot11Radio0
+ no ip address
+ no ip route-cache
+ !
+ ssid Team1
+ !
+ speed basic-1.0 basic-2.0 basic-5.5 6.0 9.0 basic-11.0 12.0 18.0 24.0 36.0 48.0 54.0
+ channel 2417
+ station-role root
+ bridge-group 1
+ bridge-group 1 subscriber-loop-control
+ bridge-group 1 block-unknown-source
+ no bridge-group 1 source-learning
+ no bridge-group 1 unicast-flooding
+ bridge-group 1 spanning-disabled
+!
+interface Dot11Radio1
+ no ip address
+ no ip route-cache
+ shutdown
+ dfs band 3 block
+ speed basic-6.0 9.0 basic-12.0 18.0 basic-24.0 36.0 48.0 54.0
+ channel dfs
+ station-role root
+ bridge-group 1
+ bridge-group 1 subscriber-loop-control
+ bridge-group 1 block-unknown-source
+ no bridge-group 1 source-learning
+ no bridge-group 1 unicast-flooding
+ bridge-group 1 spanning-disabled
+!
+interface FastEthernet0
+ no ip address
+ no ip route-cache
+ duplex auto
+ speed auto
+ bridge-group 1
+ no bridge-group 1 source-learning
+ bridge-group 1 spanning-disabled
+!
+interface BVI1
+ ip address 10.0.10.4 255.255.255.248
+ no ip route-cache
+!
+ip http server
+no ip http secure-server
+ip http help-path http://www.cisco.com/warp/public/779/smbiz/prodconfig/help/eag
+!
+bridge 1 route ip
+!
+!
+!
+line con 0
+line vty 0 4
+ login local
+!
+end
+
